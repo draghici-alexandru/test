@@ -1,7 +1,6 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-<<<<<<< HEAD
- 
+
 /* TODO:
   using tsconfig to add relative paths to the project does not require to create an
   index.ts file. You can import CoreModule from 'app/core'. Same for SharedModule.
@@ -28,10 +27,8 @@ import { NgModule } from '@angular/core';
   leave it empty as we do not have anything in that folder for now, but export all from services->index.ts into core->index.ts
  */
 
-import { ApproutingModule, CoreModule, SharedModule } from './index';
-=======
 import { ApproutingModule, CoreModule, SharedModule, AuthenticationModule } from './index';
->>>>>>> aa9b8bb9bf99bc7e75fb37ab0f67993cdfabc217
+
 
 import { AppComponent } from './app.component';
 
