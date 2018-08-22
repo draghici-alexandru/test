@@ -1,5 +1,6 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
+<<<<<<< HEAD
  
 /* TODO:
   using tsconfig to add relative paths to the project does not require to create an
@@ -28,6 +29,9 @@ import { NgModule } from '@angular/core';
  */
 
 import { ApproutingModule, CoreModule, SharedModule } from './index';
+=======
+import { ApproutingModule, CoreModule, SharedModule, AuthenticationModule } from './index';
+>>>>>>> aa9b8bb9bf99bc7e75fb37ab0f67993cdfabc217
 
 import { AppComponent } from './app.component';
 
@@ -39,7 +43,8 @@ import { AppComponent } from './app.component';
     BrowserModule,
     ApproutingModule,
     CoreModule,
-    SharedModule
+    SharedModule,
+    AuthenticationModule
   ],
   providers: [],
   bootstrap: [AppComponent]
