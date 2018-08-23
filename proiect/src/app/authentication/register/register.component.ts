@@ -8,6 +8,7 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 })
 export class RegisterComponent implements OnInit {
   registerForm: FormGroup;
+  sameemail = true;
 
   constructor(fb: FormBuilder) {
 
@@ -33,6 +34,12 @@ export class RegisterComponent implements OnInit {
   }
 
   emailConfirm() {
-
+    const email1 = this.registerForm.get(['emails', 'email']);
+    const email2 = this.registerForm.get(['emails', 'confirm_email']);
+    if (email1 === email2) {
+      this.sameemail = true;
+    } else {
+      this.sameemail = false;
+    }
   }
 }

@@ -1,61 +1,60 @@
 <form [formGroup]="registerForm" (ngSubmit)="onSubmit()">
   <div class="form-group">
     <label for="firstName" class="control-label">First name:</label>
-    <input type="text" class="form-control" formControlName="firstName"  title="Please enter your first name" placeholder="firstName">
-    <p class="help-block" *ngIf="registerForm.get('firstName').hasError('required') && registerForm.get('firstName').touched">First name is required.</p>
-    <p class="help-block" *ngIf="registerForm.get('firstName').hasError('minlength') && registerForm.get('firstName').touched">First name must be at least 4 characters long.</p>
-    <p class="help-block" *ngIf="registerForm.get('firstName').hasError('maxlength') && registerForm.get('firstName').touched">First name must not be longer than 15 characters.</p>
+    <input type="text" class="form-control" formControlName="firstName"  title="Please enter your first name">
+    <p class="alert alert-danger" *ngIf="registerForm.get('firstName').hasError('required') && registerForm.get('firstName').touched">First name is required.</p>
+    <p class="alert alert-danger" *ngIf="registerForm.get('firstName').hasError('minlength') && registerForm.get('firstName').touched">First name must be at least 4 characters long.</p>
+    <p class="alert alert-danger" *ngIf="registerForm.get('firstName').hasError('maxlength') && registerForm.get('firstName').touched">First name must not be longer than 15 characters.</p>
   </div>
   <div class="form-group">
     <label for="lastName" class="control-label">Last name:</label>
-    <input type="text" class="form-control" formControlName="lastName"  title="Please enter your last name" placeholder="lastName">
-    <p class="help-block" *ngIf="registerForm.get('lastName').hasError('required') && registerForm.get('lastName').touched">Last name is required.</p>
-    <p class="help-block" *ngIf="registerForm.get('lastName').hasError('minlength') && registerForm.get('lastName').touched">Last name must be at least 4 characters long.</p>
-    <p class="help-block" *ngIf="registerForm.get('lastName').hasError('maxlength') && registerForm.get('lastName').touched">Last name must not be longer than 15 characters.</p>
+    <input type="text" class="form-control" formControlName="lastName"  title="Please enter your last name">
+    <p class="alert alert-danger" *ngIf="registerForm.get('lastName').hasError('required') && registerForm.get('lastName').touched">Last name is required.</p>
+    <p class="alert alert-danger" *ngIf="registerForm.get('lastName').hasError('minlength') && registerForm.get('lastName').touched">Last name must be at least 4 characters long.</p>
+    <p class="alert alert-danger" *ngIf="registerForm.get('lastName').hasError('maxlength') && registerForm.get('lastName').touched">Last name must not be longer than 15 characters.</p>
   </div>
-  <div class="form-group row" formGroupName="emails">
+  <div class="form-group" formGroupName="emails">
   <div class="form-group">
-      <label for="email" class="control-label">Email:</label>
-        <input type="email" (onBlur)="emailConfirm()" class="form-control" formControlName="email" title="Please enter your email">
-        <p class="help-block" *ngIf="registerForm.get('email').hasError('required') && registerForm.get('email').touched">Email is required.</p>
-        <p class="help-block" *ngIf="registerForm.get('email').hasError('email') && registerForm.get('email').touched">Email is invalid.</p>
+      <label class="control-label">Email:</label>
+        <input type="email" class="form-control" formControlName="email" title="Please enter your email">
+        <p class="alert alert-danger" *ngIf="registerForm.get(['emails','email']).hasError('required') && registerForm.get(['emails','email']).touched">Email is required.</p>
+        <p class="alert alert-danger" *ngIf="registerForm.get(['emails','email']).hasError('email') && registerForm.get(['emails','email']).touched">Email is invalid.</p>
       </div>
       <div class="form-group">
-        <label for="confirmedEmail" class="control-label">Confirm email:</label>
-        <input type="password" class="form-control" formControlName="confirmedEmail"  title="Please re-enter your email">
-        <p class="help-block" *ngIf="registerForm.get('confirmedEmail').hasError('required') && registerForm.get('confirmedEmail').touched">Email confirmation is required.</p>
-        <p class="help-block" *ngIf="registerForm.get('confirmedEmail').hasError('email') && registerForm.get('email').touched">Email is invalid.</p>
-        <p class="help-block" *ngIf="registerForm.get('confirmedEmail').hasError('emailMismatch') && registerForm.get('confirmedEmail').touched">The emails do not match.</p>
-    </div>
+        <label class="control-label">Confirm email:</label>
+        <input type="email" (blur)="emailConfirm()" class="form-control" formControlName="confirm_email"  title="Please re-enter your email">
+        <p class="alert alert-danger" *ngIf="registerForm.get(['emails','confirm_email']).hasError('required') && registerForm.get(['emails','confirm_email']).touched">Email confirmation is required.</p>
+        <p class="alert alert-danger" *ngIf="registerForm.get(['emails','confirm_email']).hasError('email') && registerForm.get(['emails','confirm_email']).touched">Email is invalid.</p>
+        <p class="alert alert-danger" *ngIf="!sameemail">Email is not the same.</p>
+      </div>
   </div>
   <div class="form-group">
-      <label for="gender" class="control-label">Gender:</label>
+      <label class="control-label">Gender:</label>
       <div class="form-check">
-        <input class="form-check-input" type="radio" name="gender" id="gender1" value="female">
+        <input class="form-check-input" type="radio" formControlName="gender" id="gender1" value="female">
         <label class="form-check-label" for="gender1">Female</label>
       </div>
       <div class="form-check">
-        <input class="form-check-input" type="radio" name="gender" id="gender2" value="male">
+        <input class="form-check-input" type="radio" formControlName="gender" id="gender2" value="male">
         <label class="form-check-label" for="gender2">Male</label>
       </div>
-      <p class="help-block" *ngIf="registerForm.get('gender').hasError('required') && registerForm.get('gender').touched">Gender is required.</p>
+      <p class="alert alert-danger" *ngIf="registerForm.get('gender').hasError('required') && registerForm.get('gender').touched">Gender is required.</p>
   </div>
-  <div class="form-group row" formGroupName="passwords">
+  <div class="form-group" formGroupName="passwords">
     <div class="form-group">
-      <label for="password" class="control-label">Password:</label>
+      <label class="control-label">Password:</label>
       <input type="password" class="form-control" formControlName="password" title="Please enter your password">
-      <p class="help-block" *ngIf="registerForm.get('password').hasError('required') && registerForm.get('password').touched">Password is reqired</p>
-      <p class="help-block" *ngIf="registerForm.get('password').hasError('minlength') && registerForm.get('password').touched">Last name must be at least 4 characters long.</p>
-      <p class="help-block" *ngIf="registerForm.get('password').hasError('maxlength') && registerForm.get('password').touched">Last name must not be longer than 15 characters.</p>
+      <p class="alert alert-danger" *ngIf="registerForm.get(['passwords','password']).hasError('required') && registerForm.get(['passwords','password']).touched">Password is required</p>
+      <p class="alert alert-danger" *ngIf="registerForm.get(['passwords','password']).hasError('minlength') && registerForm.get(['passwords','password']).touched">Last name must be at least 6 characters long.</p>
+      <p class="alert alert-danger" *ngIf="registerForm.get(['passwords','password']).hasError('maxlength') && registerForm.get(['passwords','password']).touched">Last name must not be longer than 10 characters.</p>
     </div>
     <div class="form-group">
-      <label for="confirmedPassword" class="control-label">Confirm password:</label>
-      <input type="password" class="form-control" formControlName="confirmedPassword"  title="Please re-enter your password">
-      <p class="help-block" *ngIf="registerForm.get('confirmedPassword').hasError('required') && registerForm.get('confirmedPassword').touched">Password confirmation is required</p>
-      <p class="help-block" *ngIf="registerForm.get('confirmedPassword').hasError('minlength') && registerForm.get('confirmedPassword').touched">Last name must be at least 4 characters long.</p>
-      <p class="help-block" *ngIf="registerForm.get('confirmedPassword').hasError('maxlength') && registerForm.get('confirmedPassword').touched">Last name must not be longer than 15 characters.</p>
-      <p class="help-block" *ngIf="registerForm.get('confirmedPassword').hasError('passwordMismatch') && registerForm.get('confirmedPassword').touched">The passwords do not match</p>
+      <label class="control-label">Confirm password:</label>
+      <input type="password" class="form-control" formControlName="confirm_password"  title="Please re-enter your password">
+      <p class="alert alert-danger" *ngIf="registerForm.get(['passwords','confirm_password']).hasError('required') && registerForm.get(['passwords','confirm_password']).touched">Password confirmation is required</p>
+      <p class="alert alert-danger" *ngIf="registerForm.get(['passwords','confirm_password']).hasError('minlength') && registerForm.get(['passwords','confirm_password']).touched">Last name must be at least 6 characters long.</p>
+      <p class="alert alert-danger" *ngIf="registerForm.get(['passwords','confirm_password']).hasError('maxlength') && registerForm.get(['passwords','confirm_password']).touched">Last name must not be longer than 10 characters.</p>
     </div>
   </div>
-  <button type="submit" [disabled]="!registerForm.valid">Submit</button>
+  <button class="btn btn-primary" type="submit" [disabled]="!registerForm.valid">Submit</button>
 </form>
