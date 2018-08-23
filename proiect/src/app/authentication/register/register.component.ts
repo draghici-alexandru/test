@@ -9,6 +9,7 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 export class RegisterComponent implements OnInit {
   registerForm: FormGroup;
   sameemail = true;
+  samepassword = true;
 
   constructor(fb: FormBuilder) {
 
@@ -21,8 +22,8 @@ export class RegisterComponent implements OnInit {
       }),
       gender: ['', Validators.required],
       passwords: fb.group({
-        password: ['', [Validators.required, Validators.minLength(6), Validators.maxLength(10)]],
-        confirm_password: ['', [Validators.required, Validators.minLength(6), Validators.maxLength(10)]],
+        password: ['', [Validators.required, Validators.minLength(6), Validators.maxLength(10), Validators.pattern('.*[0-9].*')]],
+        confirm_password: ['', [Validators.required, Validators.minLength(6), Validators.maxLength(10), Validators.pattern('.*[0-9].*')]],
       })
     });
   }
@@ -34,12 +35,22 @@ export class RegisterComponent implements OnInit {
   }
 
   emailConfirm() {
-    const email1 = this.registerForm.get(['emails', 'email']);
-    const email2 = this.registerForm.get(['emails', 'confirm_email']);
+    const email1 = this.registerForm.get(['emails', 'email']).value;
+    const email2 = this.registerForm.get(['emails', 'confirm_email']).value;
     if (email1 === email2) {
       this.sameemail = true;
     } else {
       this.sameemail = false;
+    }
+  }
+
+  passwordConfirm() {
+    const password1 = this.registerForm.get(['passwords', 'password']).value;
+    const password2 = this.registerForm.get(['passwords', 'confirm_password']).value;
+    if (password1 === password2) {
+      this.samepassword = true;
+    } else {
+      this.samepassword = false;
     }
   }
 }
