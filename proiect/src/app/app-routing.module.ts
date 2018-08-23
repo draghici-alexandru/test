@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { RegisterComponent, LoginComponent } from './authentication/index';
-import { PageNotFoundComponent } from './shared/index';
+import { RegisterComponent, LoginComponent } from 'app/authentication';
+import { PageNotFoundComponent } from 'app/shared';
 
 const routes: Routes = [
   { path: '', redirectTo: '', pathMatch: 'full' },
