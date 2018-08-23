@@ -27,7 +27,10 @@ import { NgModule } from '@angular/core';
   leave it empty as we do not have anything in that folder for now, but export all from services->index.ts into core->index.ts
  */
 
-import { ApproutingModule, CoreModule, SharedModule, AuthenticationModule } from './index';
+import { AppRoutingModule } from './app-routing.module';
+import { AuthenticationModule } from './authentication';
+import { CoreModule } from './core';
+import { SharedModule } from './shared';
 
 
 import { AppComponent } from './app.component';
@@ -38,7 +41,7 @@ import { AppComponent } from './app.component';
   ],
   imports: [
     BrowserModule,
-    ApproutingModule,
+    AppRoutingModule,
     CoreModule,
     SharedModule,
     AuthenticationModule
