@@ -28,9 +28,9 @@ import { NgModule } from '@angular/core';
  */
 
 import { AppRoutingModule } from './app-routing.module';
-import { AuthenticationModule } from './authentication';
-import { CoreModule } from './core';
-import { SharedModule } from './shared';
+import { AuthenticationModule } from 'app/authentication';
+import { CoreModule } from 'app/core';
+import { SharedModule } from 'app/shared';
 
 
 import { AppComponent } from './app.component';
