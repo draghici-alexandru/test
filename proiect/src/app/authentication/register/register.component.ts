@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup, Validators, AbstractControl } from '@angular/forms';
-import { EmailConfirmingDirective } from 'app/shared';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 
 @Component({
   selector: 'app-register',
@@ -18,16 +17,22 @@ export class RegisterComponent implements OnInit {
       emails: fb.group({
         email: ['', [Validators.required, Validators.email]],
         confirm_email: ['', [Validators.required, Validators.email]],
-      }, {validator: emailConfirming}),
+      }),
       gender: ['', Validators.required],
       passwords: fb.group({
         password: ['', [Validators.required, Validators.minLength(6), Validators.maxLength(10)]],
         confirm_password: ['', [Validators.required, Validators.minLength(6), Validators.maxLength(10)]],
-      }, {validator: passwordConfirming})
+      })
     });
   }
   ngOnInit() {}
-  submitForm(value: any) {
-    console.log(value);
+
+  onSubmit() {
+    // TODO: Use EventEmitter with form value
+    console.warn(this.registerForm.value);
+  }
+
+  emailConfirm() {
+
   }
 }
