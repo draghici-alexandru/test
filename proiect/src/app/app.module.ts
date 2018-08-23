@@ -1,5 +1,6 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
+import { ReactiveFormsModule } from '@angular/forms';
 
 /* TODO:
   using tsconfig to add relative paths to the project does not require to create an
@@ -44,7 +45,8 @@ import { AppComponent } from './app.component';
     AppRoutingModule,
     CoreModule,
     SharedModule,
-    AuthenticationModule
+    AuthenticationModule,
+    ReactiveFormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]
