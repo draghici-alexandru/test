@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { UserService } from 'app/core';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-login',
@@ -8,40 +9,31 @@ import { UserService } from 'app/core';
   styleUrls: ['./login.component.css']
 })
 export class LoginComponent implements OnInit {
-  public loggedIn;
-  public loggedInSession;
   loginForm: FormGroup;
 
-  constructor(private _currentUserEmail: UserService, fb: FormBuilder) {
+  constructor(private _currentUser: UserService, private fb: FormBuilder, private router: Router) {
+  }
 
-    this.loginForm = fb.group({
+  initForm() {
+    this.loginForm = this.fb.group({
       email: ['', [Validators.required, Validators.email]],
       password: ['', [Validators.required]],
       remember: ['']
     });
-
   }
+
   ngOnInit() {
-    this.loggedIn = this._currentUserEmail.getEmail();
-    this.loggedInSession = this._currentUserEmail.getEmailSession();
+    this.initForm();
   }
 
   onSubmit() {
     if (this.loginForm.value.remember) {
-      this._currentUserEmail.setEmail();
-      this.loggedIn = this._currentUserEmail.getEmail();
+      window.localStorage.setItem('email', this.loginForm.value.email);
     } else {
-      this._currentUserEmail.setEmailSession();
-      this.loggedInSession = this._currentUserEmail.getEmailSession();
+      window.sessionStorage.setItem('email', this.loginForm.value.email);
     }
-    // TODO: Use EventEmitter with form value
-    console.warn(this.loginForm.value);
-  }
-  logOut() {
-    window.localStorage.clear();
-    window.sessionStorage.clear();
-    this.loggedIn = window.localStorage.getItem('email');
-    this.loggedInSession = window.sessionStorage.getItem('email');
+    this._currentUser.setCurrentUser(this.loginForm.value.email);
+    this.router.navigate(['']);
   }
 
 }

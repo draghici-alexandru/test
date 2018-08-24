@@ -30,7 +30,7 @@ import { ReactiveFormsModule } from '@angular/forms';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AuthenticationModule } from 'app/authentication';
-import { CoreModule, UserService } from 'app/core';
+import { CoreModule } from 'app/core';
 import { SharedModule } from 'app/shared';
 
 
@@ -48,7 +48,7 @@ import { AppComponent } from './app.component';
     AuthenticationModule,
     ReactiveFormsModule
   ],
-  providers: [UserService],
+  providers: [],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

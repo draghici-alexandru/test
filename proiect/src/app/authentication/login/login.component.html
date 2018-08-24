@@ -17,5 +17,4 @@
     </div>
   </div>
   <button class="btn btn-primary" type="submit" *ngIf="!loggedIn && !loggedInSession" [disabled]="!loginForm.valid">Login</button>
-  <button class="btn btn-primary" *ngIf="loggedIn || loggedInSession" (click)="logOut()">Log out</button>
 </form>
