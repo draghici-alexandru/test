@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { UserService } from 'app/core';
 
 @Component({
   selector: 'app-login',
@@ -7,12 +8,11 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
   styleUrls: ['./login.component.css']
 })
 export class LoginComponent implements OnInit {
-
-  loggedIn = window.localStorage.getItem('email');
-  loggedInSession = window.sessionStorage.getItem('email');
+  public loggedIn;
+  public loggedInSession;
   loginForm: FormGroup;
 
-  constructor(fb: FormBuilder) {
+  constructor(private _userService: UserService, fb: FormBuilder) {
 
     this.loginForm = fb.group({
       email: ['', [Validators.required, Validators.email]],
@@ -22,6 +22,8 @@ export class LoginComponent implements OnInit {
 
   }
   ngOnInit() {
+    this.loggedIn = this._userService.getEmail();
+    this.loggedInSession = this._userService.getEmailSession();
   }
 
   onSubmit() {
