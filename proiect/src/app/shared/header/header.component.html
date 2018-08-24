@@ -1,5 +1,5 @@
 <nav>
   <a routerLink="/">Home</a>
-  <a routerLink="/login">{{user ? 'Logout' : 'Login'}}</a>
-  <a routerLink="/register">Register</a>
+  <a routerLink="/login">{{_currentUser.getCurrentUser() ? 'Logout' : 'Login'}}</a>
+  <a routerLink="/register" *ngIf="logged">Register</a>
 </nav>
