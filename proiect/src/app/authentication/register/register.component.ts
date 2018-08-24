@@ -35,22 +35,30 @@ export class RegisterComponent implements OnInit {
   }
 
   emailConfirm() {
-    const email1 = this.registerForm.get(['emails', 'email']).value;
-    const email2 = this.registerForm.get(['emails', 'confirm_email']).value;
-    if (email1 === email2) {
-      this.sameemail = true;
+    const email = this.registerForm.get(['emails', 'email']).value;
+    const confirm_email = this.registerForm.get(['emails', 'confirm_email']).value;
+    if (email && confirm_email) {
+      if (email === confirm_email) {
+        this.sameemail = true;
+      } else {
+        this.sameemail = false;
+      }
     } else {
-      this.sameemail = false;
+      this.sameemail = true;
     }
   }
 
   passwordConfirm() {
-    const password1 = this.registerForm.get(['passwords', 'password']).value;
-    const password2 = this.registerForm.get(['passwords', 'confirm_password']).value;
-    if (password1 === password2) {
-      this.samepassword = true;
+    const password = this.registerForm.get(['passwords', 'password']).value;
+    const confirm_password = this.registerForm.get(['passwords', 'confirm_password']).value;
+    if (password && confirm_password) {
+      if (password === confirm_password) {
+        this.samepassword = true;
+      } else {
+        this.samepassword = false;
+      }
     } else {
-      this.samepassword = false;
+      this.samepassword = true;
     }
   }
 }
