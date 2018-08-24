@@ -28,11 +28,11 @@ export class LoginComponent implements OnInit {
 
   onSubmit() {
     if (this.loginForm.value.remember) {
-      window.localStorage.setItem('email', this.loginForm.value.email);
-      this.loggedIn = window.localStorage.getItem('email');
+      this._currentUserEmail.setEmail();
+      this.loggedIn = this._currentUserEmail.getEmail();
     } else {
-      window.sessionStorage.setItem('email', this.loginForm.value.email);
-      this.loggedInSession = window.sessionStorage.getItem('email');
+      this._currentUserEmail.setEmailSession();
+      this.loggedInSession = this._currentUserEmail.getEmailSession();
     }
     // TODO: Use EventEmitter with form value
     console.warn(this.loginForm.value);
