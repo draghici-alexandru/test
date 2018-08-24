@@ -5,17 +5,16 @@ import { Injectable } from '@angular/core';
 })
 export class UserService {
 
-  private currentsUserEmail;
-  private currentsUserEmailSession;
+  public currentUserEmail;
 
   constructor() {
 
   }
   setEmail() {
-    this.currentsUserEmail = window.localStorage.getItem('email');
+    this.currentUserEmail = window.localStorage.getItem('email');
   }
   setEmailSession() {
-    this.currentsUserEmailSession = window.sessionStorage.getItem('email');
+    this.currentUserEmail = window.sessionStorage.getItem('email');
   }
   getEmail() {
     return window.localStorage.getItem('email');

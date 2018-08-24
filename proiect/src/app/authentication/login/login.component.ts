@@ -12,7 +12,7 @@ export class LoginComponent implements OnInit {
   public loggedInSession;
   loginForm: FormGroup;
 
-  constructor(private _userService: UserService, fb: FormBuilder) {
+  constructor(private _currentUserEmail: UserService, fb: FormBuilder) {
 
     this.loginForm = fb.group({
       email: ['', [Validators.required, Validators.email]],
@@ -22,8 +22,8 @@ export class LoginComponent implements OnInit {
 
   }
   ngOnInit() {
-    this.loggedIn = this._userService.getEmail();
-    this.loggedInSession = this._userService.getEmailSession();
+    this.loggedIn = this._currentUserEmail.getEmail();
+    this.loggedInSession = this._currentUserEmail.getEmailSession();
   }
 
   onSubmit() {
