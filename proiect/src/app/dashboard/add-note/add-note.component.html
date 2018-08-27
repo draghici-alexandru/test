@@ -1,0 +1,10 @@
+<form [formGroup]="addnoteForm" (ngSubmit)="onSubmit()">
+  <div class="form-group">
+      <textarea class="form-control" formControlName="note" title="Please enter a note"></textarea>
+      <p class="alert alert-danger" *ngIf="addnoteForm.get('note').hasError('required') && addnoteForm.get('note').touched">The note is required.</p>
+  </div>
+  <div class="row">
+    <div class="col-sm text-right"><button class="btn btn-outline-primary" type="submit" [disabled]="!addnoteForm.valid">Add</button></div>
+    <div class="col-sm text-left"><a class="btn btn-outline-secondary" (click)="addnoteForm.reset()">Cancel</a></div>
+  </div>
+</form>

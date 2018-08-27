@@ -30,6 +30,7 @@ import { ReactiveFormsModule } from '@angular/forms';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AuthenticationModule } from 'app/authentication';
+import { DashboardModule } from 'app/dashboard';
 import { CoreModule } from 'app/core';
 import { SharedModule } from 'app/shared';
 
@@ -46,7 +47,8 @@ import { AppComponent } from './app.component';
     CoreModule,
     SharedModule,
     AuthenticationModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    DashboardModule
   ],
   providers: [],
   bootstrap: [AppComponent]
