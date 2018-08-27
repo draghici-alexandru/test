@@ -6,11 +6,11 @@ import { Subject } from 'rxjs';
 })
 export class NotesService {
 
-  private newNoteSource = new Subject<string>();
+  private newNoteSource = new Subject<any>();
 
   newNote$ = this.newNoteSource.asObservable();
 
   newNoteAded(note) {
-    this.newNoteSource = note;
+    this.newNoteSource.next(note);
   }
 }

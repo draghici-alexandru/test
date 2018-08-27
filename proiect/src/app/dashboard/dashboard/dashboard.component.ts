@@ -8,12 +8,12 @@ import { NotesService } from 'app/core';
   providers: [NotesService]
 })
 export class DashboardComponent implements OnInit {
-  noteToAdd: string[] = [];
+  noteToAdd: any = null;
 
   constructor(private notesService: NotesService) {
     notesService.newNote$.subscribe(
-      notes => {
-        this.noteToAdd.push(notes);
+      note => {
+        this.noteToAdd = note;
       });
   }
 

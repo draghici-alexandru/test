@@ -1,0 +1,10 @@
+<form [formGroup]="editNoteForm" (ngSubmit)="editSubmit()" *ngIf="note">
+  <div class="form-group">
+      <textarea class="form-control" formControlName="note" title="Please enter a note"></textarea>
+      <p class="alert alert-danger" *ngIf="editNoteForm.get('note').hasError('required') && editNoteForm.get('note').touched">The note is required.</p>
+  </div>
+  <div class="note-date">{{note.date | date:'short'}}</div>
+  <a class="btn btn-outline-primary" (click)="onShow()" [hidden]="edit">Edit</a>
+  <button class="btn btn-outline-primary" type="submit" *ngIf="edit">Edit</button>
+  <a class="btn btn-outline-danger" title="delete note" (click)="delete($index)">delete</a>
+</form>

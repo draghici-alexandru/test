@@ -4,6 +4,7 @@ import { DashboardComponent } from './dashboard/dashboard.component';
 import { NoteListComponent } from './note-list/note-list.component';
 import { AddNoteComponent } from './add-note/add-note.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { NoteDetailComponent } from './note-detail/note-detail.component';
 
 @NgModule({
   imports: [
@@ -11,6 +12,6 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
     FormsModule,
     ReactiveFormsModule
   ],
-  declarations: [DashboardComponent, NoteListComponent, AddNoteComponent]
+  declarations: [DashboardComponent, NoteListComponent, AddNoteComponent, NoteDetailComponent]
 })
 export class DashboardModule { }
