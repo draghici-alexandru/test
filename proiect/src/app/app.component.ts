@@ -17,7 +17,7 @@ export class AppComponent implements OnInit {
     if ( logged ) {
        this._currentUser.setCurrentUser(logged);
     }
-    let logged = window.sessionStorage.getItem('email');
+    logged = window.sessionStorage.getItem('email');
     if ( logged ) {
        this._currentUser.setCurrentUser(logged);
     }

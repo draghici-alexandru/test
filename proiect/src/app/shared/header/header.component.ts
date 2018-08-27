@@ -14,4 +14,10 @@ export class HeaderComponent implements OnInit {
   ngOnInit() {
   }
 
+  logOut() {
+    if (this._currentUser.getCurrentUser()) {
+      this._currentUser.logOut();
+    }
+  }
+
 }

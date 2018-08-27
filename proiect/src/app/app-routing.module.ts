@@ -5,10 +5,10 @@ import { PageNotFoundComponent } from 'app/shared';
 import { AuthGuardService as AuthGuard } from 'app/core';
 
 const routes: Routes = [
-  { path: '', redirectTo: '', pathMatch: 'full' , canActivate: [AuthGuard]},
-  { path: 'login', component: LoginComponent},
-  { path: 'register', component: RegisterComponent },
-  { path: '**',  component: PageNotFoundComponent }
+  { path: '', redirectTo: '', pathMatch: 'full' , canActivate: [AuthGuard] },
+  { path: 'login', component: LoginComponent, canActivate: [AuthGuard] },
+  { path: 'register', component: RegisterComponent, canActivate: [AuthGuard] },
+  { path: '**',  component: PageNotFoundComponent, canActivate: [AuthGuard] }
 ];
 
 @NgModule({
