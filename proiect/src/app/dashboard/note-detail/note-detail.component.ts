@@ -30,10 +30,8 @@ export class NoteDetailComponent implements OnInit {
     this.editNoteForm.value['note'] = this.editNoteForm.value.note;
     this.edit = false;
     this.editNoteForm.controls['note'].disable();
-    console.log(this.editNoteForm.value['note']);
   }
 
-  delete(index) {
-    this.note.splice(index, 1);
+  delete() {
   }
 }
