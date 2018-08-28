@@ -8,13 +8,13 @@ import { NotesService } from 'app/core';
   styleUrls: ['./add-note.component.css']
 })
 export class AddNoteComponent implements OnInit {
-  addnoteForm: FormGroup;
+  addNoteForm: FormGroup;
 
   constructor(private _noteAdded: NotesService, private fb: FormBuilder) { }
 
   initForm() {
-    this.addnoteForm = this.fb.group({
-      note: ['', [Validators.required]]
+    this.addNoteForm = this.fb.group({
+      note: ['', [Validators.required,  Validators.pattern(/(?=.*[a-zA-Z0-9])/)]]
     });
   }
   ngOnInit() {
@@ -22,11 +22,11 @@ export class AddNoteComponent implements OnInit {
   }
 
   onSubmit() {
-    const thenote = {
-      value: this.addnoteForm.value.note,
+    const note = {
+      value: this.addNoteForm.value.note,
       date: new Date()
     };
-    this._noteAdded.newNoteAded(thenote);
+    this._noteAdded.newNoteAded(note);
   }
 
 }

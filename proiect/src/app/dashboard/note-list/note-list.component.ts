@@ -26,6 +26,7 @@ export class NoteListComponent implements OnInit, OnChanges {
     for ( let i = 0; i < this.myNotes.length; i++) {
       if (this.myNotes[i].date == event.date) {
         index = i;
+        break;
       }
     }
     if (index > -1) {
