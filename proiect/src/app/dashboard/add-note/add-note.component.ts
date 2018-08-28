@@ -22,7 +22,7 @@ export class AddNoteComponent implements OnInit {
   }
 
   onSubmit() {
-    let thenote = {
+    const thenote = {
       value: this.addnoteForm.value.note,
       date: new Date()
     };

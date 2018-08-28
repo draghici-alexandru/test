@@ -1,10 +1,13 @@
-<form [formGroup]="editNoteForm" (ngSubmit)="editSubmit()" *ngIf="note">
-  <div class="form-group">
-      <textarea class="form-control" formControlName="note" title="Please enter a note"></textarea>
-      <p class="alert alert-danger" *ngIf="editNoteForm.get('note').hasError('required') && editNoteForm.get('note').touched">The note is required.</p>
+<form [formGroup]="editNoteForm" (ngSubmit)="editSubmit()" *ngIf="note" class="row mb-2 mb-1 align-items-center">
+  <div class="col">
+    <div class="form-group mb-0">
+        <textarea class="form-control" formControlName="note" title="Please enter a note"></textarea>
+        <p class="alert alert-danger" *ngIf="editNoteForm.get('note').hasError('required') && editNoteForm.get('note').touched">The note is required.</p>
+    </div>
   </div>
-  <div class="note-date">{{note.date | date:'short'}}</div>
-  <a class="btn btn-outline-primary" (click)="onShow()" [hidden]="edit">Edit</a>
-  <button class="btn btn-outline-primary" type="submit" *ngIf="edit">Edit</button>
-  <a class="btn btn-outline-danger" title="delete note" (click)="delete($index)">delete</a>
+  <div class="col-md-auto"><div class="note-date">{{note.date | date:'short'}}</div></div>
+  <div class="col-md-auto">
+      <a class="btn btn-outline-primary col mb-1" (click)="onShow()" [hidden]="edit">Edit</a>
+      <button class="btn btn-outline-primary col mb-1" type="submit" *ngIf="edit" [disabled]="!editNoteForm.valid">Save</button>
+      <a class="btn btn-outline-danger col" title="delete note" (click)="delete()">Delete</a></div>
 </form>

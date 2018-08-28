@@ -1,1 +1,1 @@
-<app-note-detail *ngFor="let note of myNotes" [note]="note"></app-note-detail>
+<app-note-detail *ngFor="let note of myNotes" [note]="note" (noteChange)="deleteNote($event)"></app-note-detail>

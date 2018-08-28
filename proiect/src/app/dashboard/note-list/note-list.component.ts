@@ -16,7 +16,21 @@ export class NoteListComponent implements OnInit, OnChanges {
   }
 
   ngOnChanges() {
-    this.myNotes.push(this.note);
+    if (this.note) {
+      this.myNotes.push(this.note);
+    }
+  }
+
+  deleteNote(event) {
+    let index;
+    for ( let i = 0; i < this.myNotes.length; i++) {
+      if (this.myNotes[i].date == event.date) {
+        index = i;
+      }
+    }
+    if (index > -1) {
+      this.myNotes.splice(index, 1);
+    }
   }
 
 }

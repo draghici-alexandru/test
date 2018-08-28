@@ -1,4 +1,4 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, EventEmitter, Output } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 
 @Component({
@@ -10,6 +10,7 @@ export class NoteDetailComponent implements OnInit {
   editNoteForm: FormGroup;
   edit: any = false;
   @Input() note: any;
+  @Output() noteChange = new EventEmitter();
 
   constructor(private fb: FormBuilder) { }
 
@@ -19,7 +20,9 @@ export class NoteDetailComponent implements OnInit {
     });
   }
   ngOnInit() {
-    this.initForm();
+    if (this.note) {
+      this.initForm();
+    }
   }
   onShow() {
     this.edit = true;
@@ -33,5 +36,7 @@ export class NoteDetailComponent implements OnInit {
   }
 
   delete() {
+    this.noteChange.emit({ date: this.note.date});
+    this.editNoteForm.controls['note'].patchValue('');
   }
 }
