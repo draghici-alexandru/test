@@ -1,1 +1,9 @@
-<app-note-detail *ngFor="let note of myNotes" [note]="note" (noteChange)="deleteNote($event)"></app-note-detail>
+<select class="custom-select col-3" id="sortBySelect" #v (change)="sortBy(v.value)"> 
+    <option selected>Sort by</option>
+    <option value='{"criteria":"date", "order":"asc"}'>Date ascending</option>
+    <option value='{"criteria":"date", "order":"desc"}'>Date descending</option>
+    <option value='{"criteria":"value", "order":"asc"}'>Alphabetically ascending</option>
+    <option value='{"criteria":"value", "order":"desc"}'>Alphabetically descending</option>
+</select>
+<hr>
+<app-note-detail *ngFor="let note of myNotes" [note]="note" (noteChange)="deleteNote($event)"></app-note-detail> 

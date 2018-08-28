@@ -1,4 +1,5 @@
 import { Component, OnInit, OnChanges, Input } from '@angular/core';
+import * as _ from "lodash";
 
 @Component({
   selector: 'app-note-list',
@@ -20,6 +21,12 @@ export class NoteListComponent implements OnInit, OnChanges {
       this.myNotes.push(this.note);
     }
   }
+
+  sortBy(sorting) {
+    sorting = JSON.parse(sorting);
+    this.myNotes = _.orderBy(this.myNotes, [sorting.criteria], [sorting.order]);
+    
+  } 
 
   deleteNote(event) {
     let index;
