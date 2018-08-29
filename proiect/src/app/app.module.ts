@@ -33,6 +33,7 @@ import { AuthenticationModule } from 'app/authentication';
 import { DashboardModule } from 'app/dashboard';
 import { CoreModule } from 'app/core';
 import { SharedModule } from 'app/shared';
+import { CustomersModule } from 'app/customers';
 
 
 import { AppComponent } from './app.component';
@@ -48,7 +49,8 @@ import { AppComponent } from './app.component';
     SharedModule,
     AuthenticationModule,
     ReactiveFormsModule,
-    DashboardModule
+    DashboardModule,
+    CustomersModule
   ],
   providers: [],
   bootstrap: [AppComponent]
