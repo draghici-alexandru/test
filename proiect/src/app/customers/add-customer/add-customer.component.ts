@@ -32,6 +32,7 @@ export class AddCustomerComponent implements OnInit {
     };
     this._customerAdded.newCustomerAded(customer);
     this.addCustomerForm.reset();
+    document.getElementById('add').click();
   }
 
 }
