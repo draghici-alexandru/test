@@ -1,0 +1,43 @@
+<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#customerModel">
+  Add
+</button>
+<div class="modal fade" id="customerModel" tabindex="-1" role="dialog" aria-labelledby="customerModelLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="customerModelLabel">Add a customer</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <form [formGroup]="addCustomerForm" (ngSubmit)="onSubmit()">
+          <div class="modal-body">
+              <div class="form-group">
+                <label for="firstName" class="control-label">First name:</label>
+                <input type="text" class="form-control" formControlName="firstName"  title="Please enter your first name">
+                <p class="alert alert-danger" *ngIf="addCustomerForm.get('firstName').hasError('required') && addCustomerForm.get('firstName').touched">First name is required.</p>
+                <p class="alert alert-danger" *ngIf="addCustomerForm.get('firstName').hasError('minlength') && addCustomerForm.get('firstName').touched">First name must be at least 4 characters long.</p>
+                <p class="alert alert-danger" *ngIf="addCustomerForm.get('firstName').hasError('maxlength') && addCustomerForm.get('firstName').touched">First name must not be longer than 15 characters.</p>
+              </div>
+              <div class="form-group">
+                <label for="lastName" class="control-label">Last name:</label>
+                <input type="text" class="form-control" formControlName="lastName"  title="Please enter your last name">
+                <p class="alert alert-danger" *ngIf="addCustomerForm.get('lastName').hasError('required') && addCustomerForm.get('lastName').touched">Last name is required.</p>
+                <p class="alert alert-danger" *ngIf="addCustomerForm.get('lastName').hasError('minlength') && addCustomerForm.get('lastName').touched">Last name must be at least 4 characters long.</p>
+                <p class="alert alert-danger" *ngIf="addCustomerForm.get('lastName').hasError('maxlength') && addCustomerForm.get('lastName').touched">Last name must not be longer than 15 characters.</p>
+              </div>
+              <div class="form-group">
+                <label class="control-label">Email:</label>
+                <input type="email" class="form-control" formControlName="email" title="Please enter your email">
+                <p class="alert alert-danger" *ngIf="addCustomerForm.get('email').hasError('required') && addCustomerForm.get('email').touched">Email is required.</p>
+                <p class="alert alert-danger" *ngIf="addCustomerForm.get('email').hasError('email') && addCustomerForm.get('email').touched">Email is invalid.</p>
+              </div>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+            <button type="submit" [disabled]="!addCustomerForm.valid" class="btn btn-primary">Save customer</button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
