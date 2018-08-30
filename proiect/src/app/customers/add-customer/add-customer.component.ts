@@ -9,6 +9,7 @@ import { CustomersService } from 'app/core';
 })
 export class AddCustomerComponent implements OnInit {
   addCustomerForm: FormGroup;
+  numberId: any = 1;
 
   constructor(private _customerAdded: CustomersService, private fb: FormBuilder) { }
 
@@ -26,10 +27,12 @@ export class AddCustomerComponent implements OnInit {
 
   onSubmit() {
     const customer = {
+      id : this.numberId,
       firstName: this.addCustomerForm.value.firstName,
       lastName: this.addCustomerForm.value.lastName,
       email: this.addCustomerForm.value.email
     };
+    this.numberId = this.numberId + 1;
     this._customerAdded.newCustomerAded(customer);
     this.addCustomerForm.reset();
     document.getElementById('add').click();

@@ -1,1 +1,14 @@
-<div class="row"><app-customer-detail class="col-3 mt-2 mb-2" *ngFor="let customer of myCustomers" [customer]="customer"></app-customer-detail></div>
+<div class="row">
+    <!-- <app-customer-detail class="col-3 mt-2 mb-2" *ngFor="let customer of myCustomers" 
+    [customer]="customer"></app-customer-detail> -->
+
+<div *ngFor="let customer of myCustomers" class="col-3 mt-2 mb-2">  
+    <div class="card">
+        <div class="card-body">
+            <div>First name: {{customer.firstName}}</div>
+            <div>Last name: {{customer.lastName}}</div>
+            <p>Email: {{customer.email}}</p>
+            <button routerLink="/customers/{{customer.id}}" class="btn btn-primary">Details</button>
+        </div>
+    </div>
+</div>

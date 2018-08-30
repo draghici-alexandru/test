@@ -1,3 +1,4 @@
-<h2>Add a customer...</h2>
-<app-add-customer></app-add-customer>
-<app-customers-list [customer]="customerToAdd"></app-customers-list>
+<router-outlet></router-outlet>
+<h2 *ngIf="customerDetail">Add a customer...</h2>
+<app-add-customer *ngIf="customerDetail"></app-add-customer>
+<app-customers-list [customer]="customerToAdd" *ngIf="customerDetail"></app-customers-list>
